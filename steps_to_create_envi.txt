@@ -1,0 +1,27 @@
+ssh XXXXXX@atlas8 #Log into HPC
+module load miniconda # Load miniconda
+conda create -n covidm r-essentials r-base # Create a new environment called covidm and install essential r packages
+source activate covidm # activate covidm environment (switch from base to covidm)
+conda list # check the installed packages in your current environment
+conda install -c conda-forge Rcpp # Install R-packages to your current environment
+conda list # check whether Rcpp is successfully installed
+
+########################################Scripts#####################################################################
+#!/bin/bash
+#PBS -q parallel12  # You can choose other PBS queue, I use parellel12 because I write codes of parallel computing
+#PBS -l select=1:ncpus=12:mpiprocs=12 #If you change queue, this should adjust accordingly 
+#PBS -j oe
+#PBS -N covidm-fit1
+cd $PBS_O_WORKDIR
+
+source /etc/profile.d/modules.sh
+module load icu/58.3
+module load miniconda
+source activate covidm
+
+#Rscript ./covidm-palestine/codes/main.R
+exit 0
+#####################################################################################################################
+
+qsub Scripts.txt # submit your job file
+qstat -x # check job status
