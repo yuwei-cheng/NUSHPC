@@ -1,0 +1,17 @@
+---
+title: "Linux Commands Summary"
+author: "Yuwei Cheng"
+date: "3/22/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Common Linux commands
+
+* Print the first/last several lines of the specified file
+  + [`tail -n filename.txt`](https://www.cyberciti.biz/faq/unix-linux-show-first-10-20-lines-of-file/) 
+  + [`head -n filename.txt`](https://kb.iu.edu/d/acrj)
+
